@@ -1,0 +1,152 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{TP}[2011/05/10]
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage[francais]{babel}
+\usepackage{wrapfig,graphicx}
+\usepackage{float,graphicx}
+\usepackage[x11names,svgnames]{xcolor}
+\usepackage{url}
+%\usepackage{mathpazo}
+
+%-----------------------------------------------------------------------------
+\usepackage{hyperref} 
+%\pdfcompresslevel=9 
+\hypersetup{ 
+     backref=true,    %permet d'ajouter des liens dans... 
+     pagebackref=true,%...les bibliographies 
+     hyperindex=true, %ajoute des liens dans les index. 
+     colorlinks=true, %colorise les liens 
+     breaklinks=true, %permet le retour  la ligne dans les liens trop longs 
+     urlcolor= blue,  %couleur des hyperliens 
+     linkcolor= blue, %couleur des liens internes 
+     bookmarks=true,  %cr des signets pour Acrobat 
+     bookmarksopen=true,            %si les signets Acrobat sont crs, 
+}
+%-----------------------------------------------------------------------------
+\usepackage{listings}
+\lstset{
+language=c++,
+commentstyle=\textit,
+basicstyle=\ttfamily\color{Black},
+keywordstyle=\color{DarkRed},
+commentstyle=\color{Blue3}\normalfont,
+identifierstyle=\color{Black},
+columns=flexible,
+%frame=tblr,
+%frameround=tttt,
+tabsize=3,
+extendedchars=true,
+showspaces=false,
+showstringspaces=false,
+numbers=left,
+numberstyle=\tiny,
+breaklines=true,
+breakautoindent=true,
+captionpos=b,
+xrightmargin=0mm,
+xleftmargin=5mm,
+%texcl=true,
+mathescape=true,
+emptylines=1,
+%morecomment=[l]{//},
+moredelim=[il][\color{Blue3}\it\small]{//}
+}
+
+
+\tolerance=500
+\newif\ifsolution \solutionfalse
+\DeclareOption{solution}{\solutiontrue}
+\ProcessOptions\relax
+
+%-----------------------------------------------------------------------------
+\renewcommand{\normalsize}{\fontsize{10pt}{11pt}\selectfont} 
+\setlength{\textwidth}{6.5in} 
+\setlength{\textheight}{9in}
+\setlength{\paperwidth}{8.5in} 
+\setlength{\paperheight}{11in}
+\setlength{\itemindent}{1cm}
+
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = 0.0 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.1in
+\parindent = 0cm
+
+
+%-----------------------------------------------------------------------------
+\newlength\regleindent
+\newlength\reglewidth
+\newlength\reglethickness
+\newlength\regleA
+\newlength\regleB
+\setlength\regleindent{1cm}
+\setlength\reglethickness{1pt}
+
+\newcommand{\regle}[2]{%
+\settowidth\reglewidth{{#1}}
+\setlength\regleA{3pt+\reglethickness/2}
+\setlength\regleB{-3pt+\reglethickness/2}
+{\color{#2}\vrule width \regleindent depth \regleB height \regleA%
+\hglue 1em{#1}\hglue 1em%
+\setlength\reglewidth{\hsize-\reglewidth-\regleindent-2em}
+\vrule width \reglewidth depth \regleB height \regleA}
+}
+
+%-----------------------------------------------------------------------------
+\newcommand{\enonce}[2]{
+\begin{center}
+{\sffamily\bfseries
+Méthode numériques et simulations (PHQ405)\\[6pt]
+{\large Travaux pratiques no #1}}\\[6pt]
+(à remettre le #2)
+\end{center}
+}
+
+\definecolor{partcolor}{rgb}{0,0,0.8}
+\newcounter{partie}
+\newcommand\partie[1]{
+\goodbreak
+\stepcounter{partie}
+\setlength{\fboxsep}{2pt}
+\fcolorbox{white}{Azure2}{\vbox{\sffamily\bfseries \thepartie.~ #1}}
+\medskip
+}
+
+%-----------------------------------------------------------------------------
+% Tableaux
+\usepackage{array} % généralise certaines fonctions de tabulation
+\newcolumntype{C}{>{$\displaystyle}c<{$}}
+\newcolumntype{L}{>{$\displaystyle}l<{$}}
+\newcolumntype{R}{>{$\displaystyle}r<{$}}
+\renewcommand{\arraystretch}{1.5}
+\usepackage{dcolumn} % permet l'alignement sur le point décimal
+
+%-----------------------------------------------------------------------------
+% Format de titres de chapitres, sections et sous-sections
+\usepackage{titlesec}
+\titleformat{\section}{\penalty-2000\vspace{0pt plus 10pt}{\color{Blue4}\titlerule[2pt]}\large\bfseries\sffamily}{\thesection}{1em}{}[\vspace{2pt plus 2pt}{\color{Blue4}\titlerule[1pt]}] 
+
+\titleformat{\subsection}[runin]{\penalty-1000\vspace{0pt plus 10pt}{}\bfseries\sffamily}{\thesubsection}{1em}{} 
+
+\newcommand\cd[1]{\lstinline!#1!}
+
+%-----------------------------------------------------------------------------
+% Figures
+
+\newcommand{\Figure}[3][scale=1]{%
+\begin{figure}[tb]
+\begin{center}
+\includegraphics[#1]{#2}
+\caption{#3}
+\end{center}
+\end{figure}
+}
+
+
+\newcommand{\attendu}[1]{\newline{\it Attendu: #1}}

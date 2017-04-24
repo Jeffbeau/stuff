@@ -1,0 +1,396 @@
+\documentclass[11pt,a4paper,titlepage]{article}
+\input{Func.tex}
+\graphicspath {{.}/{fig}}
+\begin{document}
+
+\author{\jf}
+\title{Devoir 3}
+\teacher{Louis-Philippe Nadeau}
+\class{Océanographie dynamique}
+\date{Ismer \\ UQAR \\ \today}
+\onehalfspacing
+\setlength{\parindent}{0cm}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+\maketitlepage
+
+\blankpage
+
+\section{}
+
+Les équations d'Ekman pour $V_e$ à $U_e$ sont:
+
+\begin{equation}
+-f V_e = A \del_{zz} U_e
+ \label{1}
+\end{equation}
+\begin{equation}
+f U_e = A \del_{zz} V_e.
+\end{equation}
+
+À partir de l'équation \label{1} il est possible de trouver directement la solution générale de $V_e$ en dérivant deux fois la solution générale de $U_e$. La solution générale de $V_e$ est alors:
+
+\begin{equation}
+V_e = \frac{-A}{f} Re \left[C_1 \frac{(1+i)^2}{\delta_e^2}e^{\frac{(1+i)z}{\delta_e}}+C_2 \frac{(1-i)^2}{\delta_e^2}e^{\frac{(1-i)z}{\delta_e}}+C_3 \frac{-(1+i)^2}{\delta_e^2}e^{\frac{-(1+i)z}{\delta_e}}+C_4 \frac{-(1-i)^2}{\delta_e^2}e^{\frac{-(1-i)z}{\delta_e}}\right] \nonumber
+\end{equation}
+
+\begin{equation}
+\Rightarrow V_e = \frac{-A}{f} Re \left[\frac{2i}{\delta_e^2}\left[ C_1 e^{\frac{(1+i)z}{\delta_e}}-C_2 e^{\frac{(1-i)z}{\delta_e}}+C_3 e^{\frac{-(1+i)z}{\delta_e}}-C_4 e^{\frac{-(1-i)z}{\delta_e}}\right]\right] \nonumber
+\end{equation}
+
+\begin{equation}
+\Rightarrow V_e =  Re \left[-i \left[C_1 e^{\frac{(1+i)z}{\delta_e}}-C_2 e^{\frac{(1-i)z}{\delta_e}}+C_3 e^{\frac{-(1+i)z}{\delta_e}}-C_4 e^{\frac{-(1-i)z}{\delta_e}}\right]\right]
+\end{equation}
+
+
+\subsection{}
+Pour éviter que la solution diverge en haut de l'atmosphère les $C_1$ et $C_2$ de la couche d'Ekman dans l'atmosphère doivent être nulles. De même, avec un axe des z positifs vers le haut il faut que la solution dans l'océan ait des $C_3$ et $C_4$ nulles.  La solution pour les deux couches est alors: 
+
+\textbf{Pour l'océan}
+\begin{equation}
+\Rightarrow U_e =  Re \left[ C_1 e^{\frac{(1+i)z}{\delta_e}}+C_2 e^{\frac{(1-i)z}{\delta_e}} \right] 
+\end{equation}
+
+\begin{equation}
+\Rightarrow V_e =  Re \left[-i \left[C_1 e^{\frac{(1+i)z}{\delta_e}}-C_2 e^{\frac{(1-i)z}{\delta_e}}\right]\right]
+\end{equation}
+
+\pagebreak
+
+textbf{Pour l'air}
+\begin{equation}
+\Rightarrow U_e =  Re \left[ C_3 e^{\frac{(1+i)z}{\delta_e}}+C_4 e^{\frac{(1-i)z}{\delta_e}} \right] \linebreak
+\end{equation}
+\begin{equation}
+\Rightarrow V_e =  Re \left[-i \left[C_3 e^{\frac{(1+i)z}{\delta_e}}-C_4 e^{\frac{(1-i)z}{\delta_e}}\right]\right]
+\end{equation}
+
+À $z=0$, la conditions de continuité des vitesses oblige:
+
+\begin{equation}
+U_{go}+U_{eo} = U_{ga}+U_{ea}
+\end{equation}
+
+\begin{equation}
+V_{go}+V_{eo} = V_{ga}+V_{ea}
+\end{equation}
+
+Où les indice $g$ et $e$ représentent les vitesse géostrophique et d'Ekman et les indices $o$ et $a$ représente l'océan et l'atmosphère. On a alors les deux équations ci dessous:
+
+\begin{equation}
+\begin{cases} 
+C_1 + C_2 + U_{go} = C_3 + C_4 + U_{ga} \\
+C_1 + C_2 + i V_{go} = C_3 + C_4 + i V_{ga} 
+\end{cases}
+\end{equation}
+
+Les flux de quantité de mouvement verticaux sont donné par:
+\begin{equation}
+Flux^k = A \del_z U 
+\end{equation}
+
+On a donc :
+\begin{equation}
+A_{o} \del_z U_{eo} = A_{a} \del_z U_{ea} 
+A_{o} \del_z V_{eo} = A_{a} \del_z V_{ea} 
+\end{equation}
+
+On peut remplacer $A_{o}$ et $A_{a}$ par $f/2 \delta_o^2$ et $f/2 \delta_a^2$ 
+
+En dérivant correctement les U et V on obtient les quatres équations :
+
+\begin{equation}
+\begin{cases} 
+C_1 + C_2 + U_{go} = C_3 + C_4 + U_{ga} \\
+C_1 - C_2 + i V_{go} = C_3 - C_4 + i V_{ga}\\
+(1+i)C_1 + (1-i) C_2 = - \dfrac{\delta_a}{\delta_o}\left[(1+i)C_3 + (1-i) C_4\right]\\ 
+(1+i)C_1 - (1-i) C_2 = - \dfrac{\delta_a}{\delta_o}\left[(1+i)C_3 - (1-i) C_4\right]
+\end{cases}
+\end{equation}
+
+On résout le système!!!
+\pagebreak
+En aditionnant et en soustrayant les deux premières et les deux dernières équations on obtient :
+
+\begin{equation}
+\begin{cases} 
+2 C_1 = 2 C_3 + \Delta U_{ao} + i \Delta V_{ao} \\
+2 C_2 = 2 C_4 + \Delta U_{ao} - i \Delta V_{ao} \\
+C_1 = -\dfrac{\delta_a}{\delta_o}C_3 \\
+C_2 = -\dfrac{\delta_a}{\delta_o} C_4
+\end{cases}
+\end{equation}
+
+Avec, $\Delta U_{ao} = U_a-U_o$ et  $\Delta V_{ao}= V_a-V_o$ 
+On a alors: 
+
+\begin{equation}
+C_3 \left[-2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] = \Delta U_{ao} + i \Delta V_{ao} 
+\end{equation}
+
+\begin{equation}
+\Rightarrow C_3 =\dfrac{1}{\left[-2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] } (\Delta U_{ao} + i \Delta V_{ao}) 
+\end{equation}
+
+\begin{equation}
+\Rightarrow C_1 =\dfrac{\delta_a}{\delta_o \left[2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] } (\Delta U_{ao} + i \Delta V_{ao}) 
+\end{equation}
+
+De façon analogue on trouve $C_2$ et $C_4$ pour obtenir:
+
+\begin{equation}
+\Rightarrow C_4 =\dfrac{1}{\left[-2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] } (\Delta U_{ao} - i \Delta V_{ao}) 
+\end{equation}
+
+\begin{equation}
+\Rightarrow C_2 =\dfrac{\delta_a}{\delta_o \left[2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] } (\Delta U_{ao} -  i \Delta V_{ao})
+\end{equation}
+
+En utilisant ces définition des constantes on trouve les $U_e$ et $V_e$ pour l'océan et latmosphère.
+\textbf{Pour l'océan :}
+\begin{equation}
+U_{eo} = Re \left[ \dfrac{\delta_a}{\delta_o \left[2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] } \Delta U_{ao} + i \Delta V_{ao}  e^{\frac{(1+i)z}{\delta_e}}+\dfrac{\delta_a}{\delta_o \left[2\left[\dfrac{\delta_a}{\delta_o}+1\right]\right] } \Delta U_{ao} -  i \Delta V_{ao} e^{\frac{(1-i)z}{\delta_e}} \right] 
+\end{equation}
+
+
+\begin{equation}
+=  e^{\frac{z}{\delta_o}} \frac{K}{2}  \left[(\Delta U_{ao} +  i \Delta V_{ao})(\cos(z/\delta_0)+i \sin(z/\delta_0)) + (\Delta U_{ao} -  i \Delta V_{ao}) (\cos(z/\delta_0) - i \sin(z/\delta_0)) \right] 
+\end{equation}
+ Avec $K =  \dfrac{\delta_a}{\delta_o \left[\dfrac{\delta_a}{\delta_o}+1 \right]  }$
+
+\begin{equation}
+\Rightarrow U_{eo} =  e^{\frac{z}{\delta_o}} K (\Delta U_{ao} \cos(z/\delta_0) -\Delta V_{ao} \sin(z/\delta_0))
+\end{equation}
+
+De façon analogue on trouve:
+
+\begin{equation}
+\Rightarrow V_{eo} =   e^{\frac{z}{\delta_o}} K (\Delta U_{ao} \sin(z/\delta_0) + \Delta V_{ao} \cos(z/\delta_0))
+\end{equation}
+
+Dans l'atmosphère on trouve: 
+
+\begin{equation}
+\Rightarrow U_{ea} =  e^{\frac{z}{\delta_a}} B (- \Delta U_{ao} \cos(z/\delta_a) - \Delta V_{ao}  \sin(z/\delta_a))
+\end{equation}
+
+
+\begin{equation}
+\Rightarrow V_{ea} =   e^{\frac{z}{\delta_a}} B (\Delta U_{ao} \sin(z/\delta_a) - \Delta V_{ao} \cos(z/\delta_a))
+\end{equation}
+
+Avec $B = \dfrac{1}{ \left[\dfrac{\delta_a}{\delta_o}+1 \right]}$
+
+En se rappelant que les flux de quantité de mouvement sont donné par: 
+
+\begin{equation}
+Flux^k = A \del_z U 
+\end{equation}
+
+On trouve pour l'océan: 
+
+\begin{equation}
+Flux_x = \dfrac{A_o}{\delta_o} e^{\frac{z}{\delta_o}} K (\Delta U_{ao} +\Delta V_{ao}) \sin(z/\delta_0) + (\Delta U_{ao} - \Delta V_{ao}) \cos(z/\delta_0) 
+\end{equation}
+
+\begin{equation}
+Flux_y = \dfrac{A_o}{\delta_o} e^{\frac{z}{\delta_o}} K (\Delta U_{ao} +\Delta V_{ao}) \cos(z/\delta_0) + (\Delta V_{ao} - \Delta U_{ao}) \sin(z/\delta_0) 
+\end{equation}
+
+\pagebreak
+
+On trouve pour l'atmosphère: 
+
+\begin{equation}
+Flux_x = \dfrac{A_a}{\delta_a} e^{\frac{-z}{\delta_a}} B ((\Delta U_{ao} - \Delta V_{ao}  )\cos(z/\delta_a)  - (\Delta U_{ao} + \Delta V_{ao})  \sin(z/\delta_a)
+\end{equation}
+
+\begin{equation}
+Flux_y = \dfrac{A_a}{\delta_a} e^{\frac{-z}{\delta_a}} B ((\Delta U_{ao} + \Delta V_{ao})  \cos(z/\delta_a)  + (\Delta U_{ao} - \Delta V_{ao})  \sin(z/\delta_a)
+\end{equation}
+
+
+
+On peut voir sur les graphiques représentant la vitesse et le flux en fonction de la hauteur comment agit le terme source dans l'équation.
+Dans le cas ou les $\delta_o$ et $\delta_a$ sont églaes et que la différence des vitesse en U est de 0.5 avec pas de vitesse en V. On voit des couches d'Ekman symétriques. Dans ce cas, les vitesses et les flux ont la forme de:
+
+\begin{figure}[H]
+\includegraphics[width = \linewidth]{DELTAODELTAA1}
+\caption{Vitesse dans la couche d'Ekman $\dfrac{\delta_a}{\delta_o}=1$, $\Delta U = 0.5$,$\Delta V = 0$ }
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width = \linewidth]{DELTAODELTAA1FLUX}
+\caption{Flux dans la couche d'Ekman $\dfrac{\delta_a}{\delta_o}=1$, $\Delta U = 0.5$,$\Delta V = 0$ }
+\end{figure}
+
+En augmentant la viscosité de l'océan et donc la profondeur caractéristiques de la couche d'ekman on peut voir que les changement de vitesse de l'océan sont moins gros et que les flux de quantité vont plus profondément (fig \ref{20} et  \ref{20f}  ). La viscosité permet donc à l'eau plus profondes de ressentir directement l'effet du vent. Dans ces graphique il n'y a pas de vitesse géostrophique en V et le rapport $\delta_a/\delta_0 = 20$ 
+
+\begin{figure}[H]
+\includegraphics[width = \linewidth]{DELTAODELTAA20}
+\caption{Vitesse dans la couche d'Ekman $\dfrac{\delta_a}{\delta_o}=20$, $\Delta U = 0.5$,$\Delta V = 0$}
+\label{20}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width = \linewidth]{DELTAODELTAA20FLUX}
+\caption{Flux dans la couche d'Ekman $\dfrac{\delta_a}{\delta_o}=20$, $\Delta U = 0.5$,$\Delta V = 0$ }
+\label{20f}
+
+\end{figure}
+
+En augmentant encore la viscosité dans l'océan on peut voir que les changement de vitesses dans l'océan sont beaucoup plus petit. C'est une situation semblable à ce qui se passerait entre l'atmosphère et la terre.
+
+\begin{figure}[H]
+\includegraphics[width = \linewidth]{DELTAODELTAA50}
+\caption{Vitesse dans la couche d'Ekman $\dfrac{\delta_a}{\delta_o}=50$, $\Delta U = 0.5$,$\Delta V = 0$}
+\end{figure}
+
+Les graphiques ne sont cependant pas réaliste car les valeurs de vitesse atmosphérique sont beaucoup plus grande que les vitesses dans l'océan ce qui n'est pas le cas ici. Par contre, les graphiques nous permettent tout de même de voir la structure de la couche d'Ekman.
+
+\textbf{Contrainte et transport}
+
+Pour vérifier si la contrainte et le transport sont perpendiculaires il faut intégrer les équations de vitesse et de flux sur la colonne d'eau et l'atmosphère. Techniquement, cela devrait donner des vecteurs perpendiculaires. Si on intègre de $0$ à $\infty$ les composantes des vitesses pour obtenir le transport on obtient:
+
+\begin{equation}
+ \int_{o}^{-\infty} U_{eo} = \int_{o}^{-\infty} e^{\frac{z}{\delta_o}} K (\Delta U_{ao} \cos(z/\delta_0) -\Delta V_{ao} \sin(z/\delta_0))
+\end{equation}
+
+\begin{equation}
+\Rightarrow Q_{ox} =  \dfrac{-K}{2}(\Delta U_{ao} + \Delta V_{ao})
+\end{equation}
+De façon analogue on trouve:
+
+\begin{equation}
+\Rightarrow Q_{oy} =   \dfrac{K}{2}(\Delta U_{ao} - \Delta V_{ao})
+\end{equation}
+
+Dans l'atmosphère le transport vaut:
+
+\begin{equation}
+\Rightarrow Q_{ax} =   \dfrac{-B}{2}(\Delta U_{ao} + \Delta V_{ao})
+\end{equation}
+
+\begin{equation}
+\Rightarrow Q_{ay} =   \dfrac{B}{2}(\Delta U_{ao} - \Delta V_{ao})
+\end{equation}
+
+La contrainte est quant à elle la valeur des flux à l'interface d'un côté et de l'autre multiplié par la densité.
+
+On trouve pour l'océan: 
+
+\begin{equation}
+\tau_x = \dfrac{A_o}{\delta_o}  K (\Delta U_{ao} - \Delta V_{ao}) 
+\end{equation}
+
+\begin{equation}
+\tau_y = \dfrac{A_o}{\delta_o} K (\Delta U_{ao} +\Delta V_{ao})
+\end{equation}
+
+\pagebreak
+
+On trouve pour l'atmosphère: 
+
+\begin{equation}
+\tau_{ax} = \dfrac{A_a}{\delta_a} B (\Delta U_{ao} - \Delta V_{ao}  ) 
+\end{equation}
+
+\begin{equation}
+\tau_{ay} = \dfrac{A_a}{\delta_a}  B (\Delta U_{ao} + \Delta V_{ao})
+\end{equation}
+
+Si on fait le produit scalaire entre le transport et la contrainte on obtient pour l'océan:
+\begin{equation}
+(\dfrac{A_o}{\delta_o}  K) \left(\dfrac{-K}{2}\right) ((\Delta U_{ao} - \Delta V_{ao})(\Delta U_{ao} + \Delta V_{ao}) )+\left(\dfrac{A_o}{\delta_o} K\right)\left(\dfrac{K}{2}\right)((\Delta U_{ao} - \Delta V_{ao})(\Delta U_{ao} +\Delta V_{ao}) = 0
+\end{equation}
+
+On trouve pour l'atmosphère: 
+\begin{equation}
+(\dfrac{A_a}{\delta_a}  B) \left(\dfrac{-B}{2}\right) ((\Delta U_{ao} - \Delta V_{ao})(\Delta U_{ao} + \Delta V_{ao}) )+\left(\dfrac{A_a}{\delta_a} B\right)\left(\dfrac{B}{2}\right)((\Delta U_{ao} - \Delta V_{ao})(\Delta U_{ao} +\Delta V_{ao}) = 0
+\end{equation}
+
+
+Les deux vecteurs sont donc perpendiculaires !!!!
+
+\pagebreak
+ 
+\section{}
+
+Le critère pour obtenir de l'instabilité est d'avoir une partie imaginaire à la vitesse qui entraîne une augmentation exponentielle de l'onde. Pour cela il faut que la racine soit négative et donc que:
+
+\begin{equation}
+\dfrac{\beta^2 k_d^4}{U^2} < 4 K^4 (k_d^4-K^4)
+\end{equation}
+
+Le cisaillement minimal aura lieu lorsque $ 4 \dfrac{K^4}{k_d^4 }(k_d^4-K^4)$ sera maximal. Pour trouve le maximum il suffit de dériver et de trouver le zéro.
+
+\begin{equation}
+\dfrac{d  (4 x - \frac{x^2}{b})}{d x} = 0
+\end{equation}
+
+\begin{equation}
+\Rightarrow x = \dfrac{b}{2}
+\end{equation}
+
+Avec $x=K^4$ et $b=k_d^4$.
+
+Alors,
+
+\begin{equation}
+U^2>\dfrac{\beta^2}{k_d^4}
+\end{equation}
+
+comme vu en classe le cisaillement vaut $U_1-U_2 = 2U$:
+
+\begin{equation}
+\Rightarrow U_{smin}=\dfrac{2 \beta}{ k_d^2}
+\end{equation}
+
+\begin{flushleft}
+\textbf{Partie b)}\linebreak
+\end{flushleft}
+Dans le cas du cisaillement limite on a donc, $k_{\beta}^4k_{d}^4 = k_d^8$. Pour trouver le mode le plus instable il faut que la partie imaginaire de la vitesse ait la plus grande amplitude possible. Le mode le plus instable aura donc lieu lorsque:  
+\begin{equation}
+1 + \dfrac{4 K^4 (K^4-k_d^4)}{k_d^8}
+\end{equation}
+
+sera minimale. Pour trouver le minimum il suffit de calculer la dérivé:
+
+\begin{equation}
+\dfrac{d (1 + 4 x (x-b)/b^2
+)}{dx} = 0
+\end{equation}
+\begin{equation} 
+\Rightarrow x=\dfrac{b}{2}
+\end{equation}
+
+Le mode le plus instable a donc lieu à $K=\dfrac{k_d}{\sqrt[4]{2}}$ dans le cas du cisaillement limite, cela corespond à la velur de $K$ où la racine est nulle. Ce n'est donc pas une plage de nombre d'onde instable mais un seul nombre d'onde instable. Dans le cas générale $U>U_min$, il suffit de dériver la fonction et de l'égaler à zéro pour obtenir le mode le plus instable i.e.:
+
+\begin{equation}
+\dfrac{d\sigma}{dK}=\dfrac{d}{dK}ik\dfrac{\beta}{K^2+k_d^2}\left(1+\dfrac{k_d^2}{2K^2}\left(\sqrt{1+\dfrac{4K^4(K^4-k_d⁴)}{k_{\beta}k_d^4}}\right)\right) = 0
+\end{equation} 
+
+La solution analytique est un peu difficile à trouver. Pour des cas concret il sera possible de trouver numériquement les maximums.
+
+\subsection{}
+
+Le mode le plus instable est trouvé de façon numérique et correspond au maximum du coefficient de croissance exponentielle de l'instabilité. Le coefficient de croissance est donné par:
+
+\begin{equation}
+\sigma=Re(ik\dfrac{\beta}{K^2+k_d^2}\left(1+\dfrac{k_d^2}{2K^2}\left(\sqrt{1+\dfrac{4K^4(K^4-k_d⁴)}{k_{\beta}k_d^4}}\right)\right)) 
+\end{equation} 
+
+
+Des notes, on a pour 2 couches:
+
+\begin{equation}
+k_d^2 =\dfrac{2f_o^2}{g'H}
+\end{equation}
+
+En prenant comme échelle de grandeur $1/K_{max}$ soit le mode le plus instable et comme échelle de temps l'inverse du taux de croissance du mode les plus instable pour trouver le moment où $\sigma \times t = 1$. Je trouve pour un cisaillement de 10m/s dans l'atmosphère qui correspond à un rayon de Rossby de 1000 km une échelle de grandeur de 550 km et un échelle de temps de 1.5 jours. Dans l'océan, pour une vitesse de 0.1 m/s j'obtient une échelle de grandeur de 25 km et une échelle de temps de 2.7 jours. 
+
+On peut donc voir que les instabilités baroclines sont plus petites dans l'océan tandis qu'elle sont plus grande dans l'atmosphère. Cependant les échelles de temps sont semblables dans les deux cas mais sont tout de même plus élevée dans l'océan.  
+
+
+\end{document}

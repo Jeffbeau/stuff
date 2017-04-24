@@ -1,0 +1,198 @@
+% À insérer en utilisant la commande 
+%				\input{Func.tex}
+\usepackage{PHQ405_TP}
+\usepackage{makeidx}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{setspace}
+%\NoAutoSpaceBeforeFDP
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{wrapfig}
+%\usepackage[usenames,dvipsnames]{color}
+\usepackage[nice]{nicefrac}
+\usepackage{mathrsfs}
+%\usepackage[squaren,Gray]{SIunits}
+%\usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}
+\usepackage[utf8x]{inputenc} 
+%\usepackage[french]{babel} 
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{layout}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage{color, colortbl}
+\usepackage{braket}
+\usepackage{dsfont}
+\usepackage{float}
+
+% SIunits
+\newcommand{\ampere}{\text{A}}
+\newcommand{\bell}{\text{B}}
+\newcommand{\celsius}{\degree\text{C}}
+\newcommand{\coulomb}{\text{C}}
+\newcommand{\degree}{\,^{\circ}}
+\newcommand{\farad}{\text{F}}
+\newcommand{\electro}{\text{e}}
+\newcommand{\gram}{\text{g}}
+\newcommand{\henry}{\text{H}}
+\newcommand{\hertz}{\text{Hz}}
+\newcommand{\hour}{\text{h}}
+\newcommand{\joule}{\text{J}}
+\newcommand{\kelvin}{\text{K}}
+\newcommand{\meter}{\text{m}}
+\newcommand{\minute}{\text{m}}
+\newcommand{\mole}{\text{mol}}
+\newcommand{\newton}{\text{N}}
+\newcommand{\ohm}{\Omega}
+\newcommand{\pascal}{\text{Pa}}
+\newcommand{\rad}{\text{rad}}
+\newcommand{\second}{\text{s}}
+\newcommand{\tesla}{\text{T}}
+\newcommand{\torr}{\text{Torr}}
+\newcommand{\volt}{\text{V}}
+\newcommand{\watt}{\text{W}}
+
+\newcommand{\tera}{\text{T}}
+\newcommand{\giga}{\text{G}}
+\newcommand{\mega}{\text{M}}
+\newcommand{\kilo}{\text{k}}
+\newcommand{\deci}{\text{d}}
+\newcommand{\centi}{\text{c}}
+\newcommand{\milli}{\text{m}}
+\newcommand{\micro}{\mu}
+\newcommand{\nano}{\text{n}}
+\newcommand{\pico}{\text{p}}
+\newcommand{\femto}{\text{f}}
+
+\newcommand{\per}{\text{/}}
+
+\newcommand{\Time}[3]{#1\hour~#2\minute~#3\second}
+\newcommand{\Angle}[3]{#1^{\circ}~#2'~#3''}
+
+\numberwithin{equation}{section}
+\captionsetup{justification=centering}
+
+\newcommand{\blankpage}{\pagenumbering{gobble}~\clearpage\pagenumbering{arabic}}
+
+% Définition de l'environnement graphique
+\newfloat{graph}{bth}{graph}
+\floatname{graph}{\sc Graphique}
+
+% Couleurs pour tableau
+\definecolor{Gray}{gray}{0.8}
+\newcolumntype{L}{>{\columncolor{Gray}}l}
+\newcolumntype{C}{>{\columncolor{Gray}}c}
+\newcolumntype{R}{>{\columncolor{Gray}}r}
+
+% Page titre alternative
+\makeatletter
+\def\maketitlepage{
+	\begin{titlepage}
+	\begin{singlespace}
+	\begin{center}
+		\@author
+		\vfill
+		\textsc{\large \@title}
+		\vfill
+		pour le cours\\
+		\@class
+		\vfill
+		présenté à\\
+		\@teacher
+		\vfill
+		\@date
+	\end{center}
+	\end{singlespace}
+	\end{titlepage}
+}
+\def\teacher#1{\def\@teacher{#1}}
+\def\class#1{\def\@class{#1}}
+\makeatother
+
+\let\oldepsilon\epsilon
+\let\epsilon\varepsilon
+\let\varepsilon\oldepsilon
+
+% Puces
+\newcommand{\liste}[2]{\begin{enumerate}[#1] #2 \end{enumerate}}	% \item pour mettre une puce
+\newcommand{\saute}[1]{\addtocounter{enumi}{#1}}
+\newcommand{\subsaute}[1]{\addtocounter{enumii}{#1}}
+
+% Équations
+\newcommand{\al}[1]{\begin{align} #1 \end{align}}
+\newcommand{\eq}[1]{\begin{equation} \begin{aligned} #1 \end{aligned} \end{equation}}
+\newcommand{\eqn}[1]{\eq{ #1 \notag }}
+\newcommand{\alc}[1]{\begin{gather} #1 \end{gather}}
+\newcommand{\sys}[1]{\left\lbrace\begin{matrix} #1 \end{matrix}\right.}
+\newcommand{\eqc}[1]{\eq{\begin{matrix} #1 \end{matrix}}}
+
+% Maths de base
+\newcommand{\Exp}[1]{\text{e}^{#1}}		% e^#
+\newcommand{\p}[1]{\left( #1 \right)}	% (#)
+\newcommand{\cro}[1]{\left[ #1 \right]}	% [#]
+\newcommand{\norm}[1]{\left| #1\right|}	% |#|
+\newcommand{\ee}[1]{\times 10^{#1}}		% X 10^#
+\newcommand{\Expi}[1]{\Exp{i\p{#1}}}	% e^i(#)
+\newcommand{\Expmi}[1]{\Exp{-i\p{#1}}}	% e^-i(#)
+\newcommand{\avg}[1]{\left\langle #1 \right\rangle} % <#>
+\newcommand{\acc}[1]{\left\lbrace #1 \right\rbrace} % {#}
+
+% Vecteurs
+\newcommand{\ve}[1]{\mathbf{#1}}
+\newcommand{\vu}[1]{\hat{\ve{#1}}}
+\newcommand{\vue}[1]{\vu{e}_{#1}}
+\newcommand{\Ve}[1]{\overrightarrow{#1}}
+\newcommand{\scal}{\cdot}
+\newcommand{\vecto}{\wedge}
+\newcommand{\Rot}{\Ve \nabla \times}
+\newcommand{\Div}{\Ve \nabla \cdot}
+\newcommand{\gve}[1]{\boldsymbol{#1}}
+\newcommand{\gvu}[1]{\hat{\gve{#1}}}
+\newcommand{\tens}{\otimes}
+\newcommand{\sumdir}{\oplus}
+
+% Matrices
+\newcommand{\mat}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\deter}[1]{\norm{\begin{matrix} #1 \end{matrix}}}
+\newcommand{\ident}{\mathds{1}}
+
+\newcommand{\chffk}[3]{\genfrac{[}{]}{0pt}{0}{#1~~#2}{#3}}
+\newcommand{\chfsk}[3]{\genfrac{\lbrace}{\rbrace}{0pt}{0}{#1~~#2}{#3}}
+
+% Dérivées
+\newcommand{\D}{\text{d}}
+\newcommand{\dd}[2]{\frac{\D#1}{\D#2}}
+\newcommand{\ddn}[3]{\frac{\D^{#1}#2}{\D #3^{#1}}}
+\newcommand{\dx}[1]{\dd{#1}{x}}
+\newcommand{\dy}[1]{\dd{#1}{y}}
+\newcommand{\dt}[1]{\dd{#1}{t}}
+\newcommand{\del}{\partial}
+\newcommand{\ddp}[2]{\frac{\del#1}{\del#2}}
+\newcommand{\ddpn}[3]{\frac{\del^{#1}#2}{\del #3^{#1}}}
+
+\newcommand{\eval}[1]{\left. {#1} \right|}
+
+% Operateurs
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Tr}{Tr}
+
+% Symboles
+\newcommand{\N}{\mathbbm{N}}	% nombres naturels
+\newcommand{\Z}{\mathbbm{Z}}	% nombres entiers
+\newcommand{\R}{\mathbbm{R}}	% nombres reels
+\newcommand{\C}{\mathbbm{C}}	% nombres complexes
+\newcommand{\script}[1]{\mathscr{#1}}
+
+% Constantes
+\newcommand{\eo}{\epsilon_0}
+
+% Références
+\newcommand{\US}{Université de Sherbrooke}
+\newcommand{\DP}{Département de physique}
+\newcommand{\dep}{département de physique}
+\newcommand{\jf}{Jean-François Beaudoin}
